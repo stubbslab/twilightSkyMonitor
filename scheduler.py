@@ -91,7 +91,7 @@ class Scheduler:
 
         alt_current, az_current = self.get_current_alt_az()
         # print(f"Current Altitude: {alt_current}, Current Azimuth: {az_current}")
-        print(f"Exposure Time: {exposureTime}")
+        print(f"Exposure Time: {exposureTime:0.2f} seconds")
 
         # Add exposure to the database
         timestamp = datetime.datetime.utcnow()
@@ -148,8 +148,8 @@ class Scheduler:
         durations = []
         positions = [self.mount.altitude_deg]
 
-        # corrections = [1.16128198, 0.98503225, 0.9976483, 1.0, 1.0, 1.0]+[1.0]*nsteps
-        corrections = [1.0]*nsteps
+        corrections = [1.22815561, 0.98431782, 1.0, 1.0, 1.0, 1.0]
+        # corrections = [1.0]*nsteps
         for i in range(nsteps):
             print(6*"---------")
             print(f"Step {i+1}/{nsteps}")

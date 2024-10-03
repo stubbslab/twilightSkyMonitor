@@ -53,8 +53,8 @@ s = Scheduler(filter='SDSSg')
 
 # Set the observation parameters
 s.set_photodioe_params(expTime=1, nplc=5, rang0=20e-6)
-s.set_azimuth_sweep_params(az_steps=7, az_slew_time=7.46)
-s.set_elevation_sweep_params(el_steps=5, el_slew_time=2.75)
+s.set_azimuth_sweep_params(az_steps=7, az_slew_time=7.3)
+s.set_elevation_sweep_params(el_steps=5, el_slew_time=2.456)
 
 # Starting the mapping
 s.map_alt_az()
