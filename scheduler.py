@@ -247,7 +247,7 @@ class Scheduler:
         header("Starting Forward Azimuth Sweep")
         self.forward_az_alt_swep()
         tforward = (time.time()-t0)/60.
-        print(f"Azimuth Forward Sweep Completed in {tforward:2.0f} minutes")
+        print(f"Azimuth Forward Sweep Completed in {tforward:0.2f} minutes")
 
         # Backward Azimuth Sweep
         header("Starting Backward Azimuth Sweep")
@@ -255,7 +255,7 @@ class Scheduler:
         self.backward_az_alt_swep()
 
         tbackward = (time.time()-tbacward_initial)/60.
-        print(f"Azimuth Backward Sweep Completed in {tbackward:2.0f} minutes")
+        print(f"Azimuth Backward Sweep Completed in {tbackward:0.2f} minutes")
         
         # Report duration of the mapping
         ttotal = (time.time()-t0)/60.
@@ -291,8 +291,8 @@ class Scheduler:
                 break
             tfinal = time.time()-t0
             
-            print(6*"---------")
             print(f"Azimuth Forward Cycle {i+1} completed within {tfinal:0.2f} seconds")
+            print(6*"---------")
             print("")
 
     def backward_az_alt_swep(self):
@@ -310,7 +310,7 @@ class Scheduler:
         
         # Make sure the azimuth position is -180 deg
         print("Returning to -180 degree position")
-        self.mount.goto_azimuth(-180, tol=0.5, speed=8, niters=3)
+        self.mount.goto_azimuth(-179.0, tol=1.0, speed=8, niters=3)
 
         # going forward in bacward
         header("Starting Backward Azimuth Sweep")
@@ -338,8 +338,9 @@ class Scheduler:
                 self.going_backward_az(self.az_slew_time)
 
             tfinal = (time.time()-t0)/60.
-            print(6*"---------")
+            
             print(f"Azimuth Backward Cycle {i+1} completed within {tfinal:0.2f} seconds")
+            print(6*"---------")
             print("")
 
     def going_forward_az(self, slewTime):
